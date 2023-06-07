@@ -47,42 +47,88 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
+#### Step 1:
+
+Module Declaration. module is a keywords defined in Verilog .
+#### Step 2:
+
+Input-Output Delecaration.
+
+Multiplexer has four inputs (I0,I1,I2,I3) and two select lines(S0,S1).
+
+Demultiplexer has single input(I) and two select lines(S0,S1).
+#### Step 3:
+
+In multiplexer ,we use both AND logic and OR logic inorder to obtain the result.
+
+In demultiplexer , only AND gates are being used.
+#### Step 4:
+
+Ending module. endmodule is a keywords defined in Verilog.
 
 
 
 ### PROGRAM 
-/*
+
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+#### Developed by: Gumma Dileep Kumar 
+#### RegisterNumber: 212222240032
 
-
-
-
-
+### MULTIPLEXER:
+```python
+module multiplexer(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire P,Q,R,S,S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and(P,S0c,S1c,I0);
+and(Q,S0c,s1,I1);
+and(R,S0,S1c,I2);
+and(S,S0,S1,I3);
+or(Y,P,R,Q,S);
+endmodule
+```
+### DE-MULTIPLEXER:
+```python
+module demulti(Y0,Y1,Y2,Y3,S0,S1,I);
+input I,S0,S1;
+output Y0,Y1,Y2,Y3;
+wire S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and(Y0,I,S0c,S1c);
+and(Y1,I,S0c,S1);
+and(Y2,I,S0,S1c);
+and(Y3,I,S0,S1);
+endmodule
+```
 
 ### RTL LOGIC  
+#### MULTIPLEXER:
+![model](RTL_multi.png)
 
-
-
-
-
-
-
+#### DE-MULTIPLEXER:
+![model](RTL_demulti.png)
 
 ### TIMING DIGRAMS  
+#### MULTIPLEXER:
+![model](multi.png)
 
-
-
+#### DE-MULTIPLEXER:
+![model](demulti.png)
 
 
 ### TRUTH TABLE 
+#### MULTIPLEXER:
+![model](multi_truth.png)
 
+#### DE-MULTIPLEXER:
+![model](De-multi_truth.png)
 
 
 
 
 
 ### RESULTS 
+Thus the program to design multiplexer and de-multiplexer is executed successfully .
